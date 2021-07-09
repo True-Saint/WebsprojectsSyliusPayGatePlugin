@@ -1,0 +1,6 @@
+webs_projects_sylius_pay_gate:
+    paygate:
+        paygate_id: 0
+        reference: ""
+        locale: ""
+        country: ""

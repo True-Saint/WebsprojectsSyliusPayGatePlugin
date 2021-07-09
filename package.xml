@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.1" version="2.0"
+         xmlns="http://pear.php.net/dtd/package-2.0"
+         xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+   http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0
+   http://pear.php.net/dtd/package-2.0.xsd">
+    <name>WebsproejctsSyliusPayGatePlugin</name>
+    <channel>pear.php.net</channel>
+    <summary>PayGate plugin</summary>
+    <description>PayGate plugin.</description>
+    <lead>
+        <name>Websprojects</name>
+        <user>Thato</user>
+        <email>thato@websprojects.co.za</email>
+        <active>yes</active>
+    </lead>
+    <date>2021-06-17</date>
+    <version>
+        <release>1.0.0</release>
+        <api>1.0.0</api>
+    </version>
+    <stability>
+        <release>stable</release>
+        <api>stable</api>
+    </stability>
+    <license uri="http://www.symfony-project.com/license">
+        MIT license
+    </license>
+    <notes>notes</notes>
+    <contents>
+        <dir name="/">
+            <file role="data" name="README.md" />
+
+            <dir name="src">
+                <dir name="DependencyInjection">
+                    <file role="data" name="WebsProjectsSyliusPayGateExtension.php" />
+                    <file role="data" name="Configuration.php" />
+                </dir>
+                <dir name="Form">
+                    <dir name="Type">
+                        <file role="data" name="SyliusGatewayConfigurationType.php" />
+                    </dir>
+                </dir>
+                <dir name="Payum">
+                    <dir name="Action">
+                        <file role="data" name="CaptureAction.php" />
+                        <file role="data" name="ConvertPaymentAction.php" />
+                        <file role="data" name="NotifyAction.php" />
+                        <file role="data" name="StatusAction.php" />
+                        <file role="data" name="SyncAction.php" />
+                    </dir>
+                    <file role="data" name="SyliusApi.php" />
+                    <file role="data" name="SyliusPaymentGatewayFactory.php" />
+                </dir>
+                <dir name="Resources">
+                    <dir name="config">
+                        <file role="data" name="admin_routing.yml" />
+                        <file role="data" name="services.xml" />
+                        <file role="data" name="shop_routing.yml" />
+                    </dir>
+                </dir>
+
+                <file role="data" name="WebsProjectsSyliusPayGatePlugin.php" />
+            </dir>
+
+            <!-- ... -->
+        </dir>
+    </contents>
+
+    <dependencies>
+        <required>
+            <php>
+                <min>7.0</min>
+                <max>8.0.0</max>
+            </php>
+            <pearinstaller>
+                <min>1.10.1</min>
+            </pearinstaller>
+        </required>
+    </dependencies>
+
+    <phprelease>
+    </phprelease>
+
+    <changelog>
+        <!-- CHANGELOG -->
+    </changelog>
+</package>

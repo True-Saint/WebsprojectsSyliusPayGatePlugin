@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: WebsProjects\PayGatePlugin
+        psr4_prefix: WebsProjects\PayGatePlugin

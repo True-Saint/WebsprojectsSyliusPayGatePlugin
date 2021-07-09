@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="acme_hello.paygate.paygate_id" />
+        <parameter key="acme_hello.paygate.reference" />
+        <parameter key="acme_hello.paygate.locale" />
+        <parameter key="acme_hello.paygate.country" />
+    </parameters>
+
+    <services>
+
+        <!-- Put your services here -->
+        <!-- src/Resources/config/services.xml -->
+
+
+
+        <service id="websprojects.paygate.plugin" class="WebsProjects\PayGatePlugin\Payum\Action\CaptureAction">
+            <argument>%webs_projects_sylius_pay_gate.paygate.paygate_id%</argument> <!-- will be filled in with client_id dynamically -->
+            <argument>%webs_projects_sylius_pay_gate.paygate.reference%</argument> <!-- will be filled in with client_secret dynamically -->
+            <argument>%webs_projects_sylius_pay_gate.paygate.locale%</argument> <!-- will be filled in with client_id dynamically -->
+            <argument>%webs_projects_sylius_pay_gate.paygate.country%</argument> <!-- will be filled in with client_secret dynamically -->
+        </service>
+
+        <service id="app.sylius_payment" class="Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder">
+            <argument>WebsProjects\PayGatePlugin\Payum\SyliusPaymentGatewayFactory</argument>
+            <tag name="payum.gateway_factory_builder" factory="sylius_payment" />
+        </service>
+
+        <service id="WebsProjects\PayGatePlugin\Form\Type\SyliusGatewayConfigurationType">
+            <tag name="sylius.gateway_configuration_type" type="sylius_payment" label="PayGate" />
+            <tag name="form.type" />
+        </service>
+
+        <service id="WebsProjects\PayGatePlugin\Payum\Action\CaptureAction" public="true">
+            <argument type="service" id="sylius.http_client" />
+            <tag name="payum.action" factory="sylius_payment" alias="payum.action.capture" />
+        </service>
+
+        <service id="WebsProjects\PayGatePlugin\Payum\Action\NotifyAction" public="true">
+            <argument type="service" id="sylius.http_client" />
+            <tag name="payum.action" factory="sylius_payment" alias="payum.action.notify" />
+        </service>
+    </services>
+</container>
